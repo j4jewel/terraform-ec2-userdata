@@ -101,4 +101,24 @@ We can also use -auto-approve while applying.
 ```
  
  
+You can also change the userdata script according to your need.
+If you want to spin-up jenkins docker container inside an Amazon-Linux-2 ec2 instance, you can use the following userdata script.( You have to change the securoty group rules to allow ports 8080 and 50000) 
+
+Script: [link](https://github.com/FujiClado/jenkins-ec2/blob/master/install.sh)
+
+```sh
+#!/bin/bash
+
+yum install git -y
+git clone https://github.com/FujiClado/jenkins-ec2.git
+cd jenkins-ec2
+chmod +x install.sh
+./install.sh
+```
+
+Ssh into the ec2 instance and get the hash value from the jenkins.txt.
+
+## cat /home/ec2-user/jenkins.txt
+
+
  
